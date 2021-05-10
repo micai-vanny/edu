@@ -51,7 +51,7 @@ public class RequestServlet extends HttpServlet {
 //	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 	
 		String name = request.getParameter("name");
@@ -59,7 +59,7 @@ public class RequestServlet extends HttpServlet {
 		String age = request.getParameter("user_age");
 		
 		PrintWriter out =  response.getWriter();
-		out.print("<table border='1'><tr><th>이름</th><td>" + name + "</td></tr><tr><th>아이디</th><td>" + id + "</td><</tr><tr><th>나이</th><td>"+age+"</td><</tr></table>");
+		out.print("<table border='1'><tr><th>이름</th><td>" + name + "</td></tr><tr><th>아이디</th><td>" + id + "</td></tr><tr><th>나이</th><td>"+age+"</td></tr></table>");
 	
 	}
 	
@@ -73,11 +73,7 @@ public class RequestServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.print("<table border='1'><tr><th>이름</th><td>" + name + "</td></tr><tr><th>아이디</th><td>" + id + "</td><</tr><tr><th>나이</th><td>"+age+"</td><</tr></table>");
-	
-		
-		
-		
+		out.print("<table border='1'><tr><th>이름</th><td>" + name + "</td></tr><tr><th>아이디</th><td>" + id + "</td></tr><tr><th>나이</th><td>"+age+"</td></tr></table>");
 	}
 
 }
