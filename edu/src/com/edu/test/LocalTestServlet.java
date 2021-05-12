@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/local")
 public class LocalTestServlet extends HttpServlet{
-	int number = 0; 	// 멤버 변수로 선언하면 여러 클라이언트가 쓰레드를 공유하여 사용하게 됨.
+//	int number = 0; 	// 멤버 변수로 선언하면 여러 클라이언트가 쓰레드를 공유하여 사용하게 됨.
+						// 인스턴스 멤버라고도 함 (인스턴스가 생성되어야 사용가능하다고 해서....)
+//	private static int age; // 클래스 변수(static 멤버)
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//int number = 0;	// 지역변수로 선언하게 되면 클라이언트들이 각각의 쓰레드를 사용하게 된다.
+		int number = 0;	// 지역변수로 선언하게 되면 클라이언트들이 각각의 쓰레드를 사용하게 된다.
 		
 		String str = req.getParameter("msg");
 		
