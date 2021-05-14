@@ -17,6 +17,30 @@ public class MemberDAO {
 		conn = ds.getConnection();
 	}
 	
+	public Member checkInfo(String id, String pwd) {
+		String sql = "select * from member where member_id=? and member_pwd=?";
+		Member mem = new Member();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, pwd);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				mem.setMemberId(rs.getString("member_id"));
+				mem.setMemberPwd(rs.getNString("member_pwd"));
+				mem.setMemberName(rs.getString("member_name"));
+				mem.setMember_age(rs.getInt("member_age"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return mem;
+	}
+	
 	public List<Member> getMemberList(){
 		String sql = "select * from member order by 1";
 		List<Member> list = new ArrayList<Member>();
