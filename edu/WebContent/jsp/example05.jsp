@@ -8,6 +8,13 @@
 </head>
 <body>
 <h1>include 지시자 사용.</h1>
-<%@ include file = "copyright.jsp" %>
+<%=application.getAttribute("welcomeMsg").toString() %>
+<%
+	out.print("<h3>" + request.getAttribute("result").toString() + "</h3>");
+%>
+
+<%-- 밑에 있는 include file이랑 똑같음. --%>
+<jsp:include page="copyright.jsp"></jsp:include>
+<%-- <%@ include file = "copyright.jsp" %> --%>
 </body>
 </html>
